@@ -1,0 +1,88 @@
+.layui-panel {
+    padding: 30px;
+}
+
+.info {
+    overflow: hidden;
+    padding: 10px;
+}
+
+.meta {
+    float: left;
+}
+
+.time {
+    float: right;
+    color: darkgrey;
+}
+
+.layui-card {
+    margin: 2px;
+    border-radius: 10px;
+}
+
+.comment-box {
+    margin-top: 20px;
+}
+
+.comment-username {
+    float: left;
+    color: #6D757A;
+}
+
+.comment-time {
+    float: right;
+}
+
+.comment-content {
+    color: #222222;
+}
+
+.tips-cant-comment {
+    margin-top: 10px;
+    font-size: 20px;
+    color: palevioletred;
+    text-align: center;
+}
+
+.tips-login {
+    color: palevioletred;
+}
+
+.add-comment{
+    position: relative;
+    text-align: right;
+    margin: 10px;
+}
+
+.add-comment input{
+    position: relative;
+    right: 5%;
+}
+
+#content {
+    display: none;
+}
+
+#author {
+    float: right;
+    color: orangered;
+}
+
+#author:hover {
+    float: right;
+    color: lightcoral;
+}
+
+#author:active {
+    float: right;
+    color: indianred;
+}
+
+#category {
+    color: green;
+}
+
+#keywords {
+    color: deepskyblue
+}

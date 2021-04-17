@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新增管理员</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/super-add-admin.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/super-add-admin.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <blockquote class="layui-elem-quote"><b><i class="layui-icon layui-icon-username"></i>&nbsp;新增管理员</b></blockquote>
+    <form class="layui-form" action="" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>&nbsp;用户名&nbsp;<span class="layui-badge-dot"></span></label>
+            <div class="layui-input-inline">
+                <input type="text" name="newUsername" required placeholder="请输入用户名" autocomplete="off"
+                       class="layui-input username"
+                       minlength="1" maxlength="20"
+                       oninput="usernameCheck(value)">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="tips"></div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;<span class="layui-badge-dot"></span></label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" placeholder="请输入密码" autocomplete="off"
+                       class="layui-input password"
+                       minlength="8" maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input class="layui-btn layui-btn-lg" id="submit-button" type="submit" value="马上添加">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${#authentication.name + '的博客'}"></title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/my-articles.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <blockquote class="layui-elem-quote"><b><i class="layui-icon layui-icon-rss"></i>&nbsp;我的全部博客</b></blockquote>
+    <table id="hot-articles" lay-filter="hot-articles-filter"></table>
+    <script type="text/html" id="table-options">
+        <button class="layui-btn layui-btn-xs"
+                lay-event="newArticle"><i class="layui-icon layui-icon-addition"></i>&nbsp;发表博客
+        </button>
+        <button class="layui-btn layui-btn-xs layui-btn-danger"
+                lay-event="deleteSelected"><i class="layui-icon layui-icon-delete"></i>&nbsp;删除选中的博客
+        </button>
+    </script>
+    <script type="text/html" id="column-options">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
+    </script>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

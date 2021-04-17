@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${#authentication.name + '的博客'}"></title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/my-subscriptions.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <blockquote class="layui-elem-quote"><b><i class="layui-icon layui-icon-star"></i>&nbsp;我关注的全部博客</b></blockquote>
+    <table id="subscriptions" lay-filter="subscriptions-filter"></table>
+    <script type="text/html" id="table-options">
+        <button class="layui-btn layui-btn-xs layui-btn-danger"
+                lay-event="deleteSelected"><i
+                class="layui-icon layui-icon-delete"></i>&nbsp;取消关注选中的博客
+        </button>
+    </script>
+    <script type="text/html" id="column-options">
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
+    </script>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

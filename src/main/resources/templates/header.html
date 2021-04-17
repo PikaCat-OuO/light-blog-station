@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- 头部导航栏 -->
+<header th:fragment="header">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <ul class="layui-nav">
+        <li class="layui-nav-item" id="main-page">
+            <a th:href="@{/}"><i class="layui-icon layui-icon-home"></i>&nbsp;博客主页</a>
+        </li>
+        <li class="layui-nav-item" id="my-subscriptions" sec:authorize="hasAuthority('USER')">
+            <a th:href="@{/my-subscriptions}"><i class="layui-icon layui-icon-star"></i>&nbsp;我的关注</a>
+        </li>
+        <li class="layui-nav-item" id="my-blog" sec:authorize="hasAuthority('USER')">
+            <a th:href="@{/my-articles}"><i class="layui-icon layui-icon-rss"></i>&nbsp;我的博客</a>
+        </li>
+        <li class="layui-nav-item" id="contribute-category">
+            <a th:href="@{/contribute-category}"><i class="layui-icon layui-icon-gift"></i>&nbsp;贡献分类</a>
+        </li>
+        <li class="layui-nav-item" id="admin" sec:authorize="hasAnyAuthority('SUPER_ADMIN','ADMIN')">
+            <a th:href="@{/admin}"><i class="layui-icon layui-icon-set"></i>&nbsp;网站管理</a>
+        </li>
+        <li class="layui-nav-item personal-center" id="personal-center" sec:authorize="isAuthenticated()">
+            <a th:href="@{/user-page/{username}/(username = ${#authentication.name})}"
+               sec:authorize="hasAuthority('USER')"><i class="layui-icon layui-icon-username"></i>&nbsp;
+                <span th:text="${#authentication.name + '（博客会员）'}"></span>
+            </a>
+            <a th:href="@{/}" sec:authorize="hasAnyAuthority('ADMIN','SUPER_ADMIN')">
+                <i class="layui-icon layui-icon-username"></i>&nbsp;
+                <span sec:authorize="hasAuthority('ADMIN')"
+                      th:text="${#authentication.name + '（管理员）'}"></span>
+                <span sec:authorize="hasAuthority('SUPER_ADMIN')"
+                      th:text="${#authentication.name + '（超级管理员）'}"></span>
+            </a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                <dd>
+                    <a th:href="@{/user-page/{username}/edit-user(username = ${#authentication.name})}"
+                       sec:authorize="hasAuthority('USER')"><i class="layui-icon layui-icon-edit"></i>&nbsp;修改个人信息</a>
+                    <a th:href="@{/admin/edit-admin/{username}(username = ${#authentication.name})}"
+                       sec:authorize="hasAuthority('ADMIN')"><i class="layui-icon layui-icon-edit"></i>&nbsp;修改管理员信息</a>
+                    <a th:href="@{/super-admin/edit-superadmin/{username}(username = ${#authentication.name})}"
+                       sec:authorize="hasAuthority('SUPER_ADMIN')"><i
+                            class="layui-icon layui-icon-edit"></i>&nbsp;修改超级管理员信息</a>
+                </dd>
+                <dd>
+                    <a th:href="@{/logout}"><i class="layui-icon layui-icon-logout"></i>&nbsp;退出登录</a>
+                </dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item personal-center" sec:authorize="isAnonymous()">
+            <a th:href="@{/login}"><i class="layui-icon layui-icon-username"></i>&nbsp;您好，请登录</a>
+        </li>
+    </ul>
+</header>
+</html>

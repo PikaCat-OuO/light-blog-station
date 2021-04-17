@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="网站管理"></title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/admin.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><i class='layui-icon layui-icon-rss'></i>&nbsp;博客管理</li>
+            <li><i class='layui-icon layui-icon-user'></i>&nbsp;账号管理</li>
+            <li><i class='layui-icon layui-icon-note'></i>&nbsp;分类管理</li>
+            <li sec:authorize="hasAuthority('SUPER_ADMIN')"><i class='layui-icon layui-icon-username'></i>&nbsp;管理员管理
+            </li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <script type="text/html" id="blog-table-options">
+                    <button class="layui-btn layui-btn-xs layui-btn-danger"
+                            lay-event="deleteSelected"><i class="layui-icon layui-icon-delete"></i>&nbsp;删除选中的博客
+                    </button>
+                </script>
+                <script type="text/html" id="blog-column-options">
+                    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
+                </script>
+                <table id="blog-manage" lay-filter="blog-manage-filter"></table>
+            </div>
+            <div class="layui-tab-item">
+                <table id="user-manage" lay-filter="user-manage-filter"></table>
+                <script type="text/html" id="user-table-options">
+                    <button class="layui-btn layui-btn-xs layui-btn-danger"
+                            lay-event="deleteSelected"><i class="layui-icon layui-icon-delete"></i>&nbsp;删除选中的用户
+                    </button>
+                </script>
+                <script type="text/html" id="user-column-options">
+                    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
+                </script>
+            </div>
+            <div class="layui-tab-item">
+                <table id="category-manage" lay-filter="category-manage-filter"></table>
+                <script type="text/html" id="category-table-options">
+                    <button class="layui-btn layui-btn-xs layui-btn-danger"
+                            lay-event="deleteSelected"><i class="layui-icon layui-icon-delete"></i>&nbsp;删除选中的分类
+                    </button>
+                </script>
+                <script type="text/html" id="category-column-options">
+                    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
+                </script>
+            </div>
+            <div class="layui-tab-item" sec:authorize="hasAuthority('SUPER_ADMIN')">
+                <table id="admin-manage" lay-filter="admin-manage-filter"></table>
+                <script type="text/html" id="admin-table-options">
+                    <button class="layui-btn layui-btn-xs"
+                            lay-event="newAdmin"><i class="layui-icon layui-icon-addition"></i>&nbsp;新增管理员
+                    </button>
+                    <button class="layui-btn layui-btn-xs layui-btn-danger"
+                            lay-event="deleteSelected"><i class="layui-icon layui-icon-delete"></i>&nbsp;删除选中的管理员
+                    </button>
+                </script>
+                <script type="text/html" id="admin-column-options">
+                    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

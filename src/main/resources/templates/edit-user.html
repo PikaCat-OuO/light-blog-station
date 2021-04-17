@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'编辑 ' + username + ' 的信息'}"></title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/edit-user.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/edit-user.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <blockquote class="layui-elem-quote"><b><i class="layui-icon layui-icon-edit"></i>&nbsp;<span
+            th:text="${'编辑 ' + username + ' 的信息'}"></span></b></blockquote>
+    <form class="layui-form" action="" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>&nbsp;新用户名&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="text" name="newUsername" required placeholder="请输入新用户名" autocomplete="off"
+                       class="layui-input username"
+                       minlength="1" maxlength="20"
+                       th:value="${userInfo.username}"
+                       oninput="usernameCheck(value)">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="tips"></div>
+        </div>
+        <div class="layui-form-item" sec:authorize="hasAuthority('USER')">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-key"></i>&nbsp;原密码&nbsp;<span class="layui-badge-dot"></span></label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required placeholder="请输入原密码以验证身份" autocomplete="off"
+                       class="layui-input password"
+                       minlength="8" maxlength="20">
+            </div>
+        </div>
+        <input type="hidden" sec:authorize="!hasAuthority('USER')" name="password" value="adminRightNow">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>&nbsp;新密码&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="password" name="newPassword" placeholder="请输入新密码" autocomplete="off"
+                       class="layui-input password"
+                       minlength="8" maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-time"></i>&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;龄&nbsp;&nbsp;&nbsp;</label>
+            <div class="layui-input-inline">
+                <input type="number" name="age" placeholder="请输入年龄" autocomplete="off"
+                       class="layui-input age"
+                       min="0" max="150"
+                       oninput="if(value.length > 3) value = value.slice(0, 3)
+                       else if (value > 150) value = 150
+                       else if (value < 0) value = 0
+                       else if (!/^[0-9]+$/.test(value)) value = ''"
+                       th:value="${userInfo.age == null ? '' : userInfo.age}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-male"></i><i class="layui-icon layui-icon-female"></i>性&nbsp;别&nbsp;<span class="layui-badge-dot"></span></label>
+            <div class="layui-input-block">
+                <input type="radio" name="gender" value="男" title="男" th:checked="${userInfo.gender == '男'}">
+                <input type="radio" name="gender" value="女" title="女" th:checked="${userInfo.gender == '女'}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-user"></i>&nbsp;真实姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="realname" placeholder="请输入真实姓名" autocomplete="off"
+                       class="layui-input realname"
+                       maxlength="20"
+                       th:value="${userInfo.realname == null ? '' : userInfo.realname}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-date"></i>&nbsp;出生日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="birthday" id="birthday"
+                       placeholder="请选择出生日期" autocomplete="off"
+                       class="layui-input birthday"
+                       th:value="${userInfo.birthday == null ? '' : userInfo.birthday}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-cellphone"></i>&nbsp;电话号码</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="telephone" placeholder="请输入手机号码" autocomplete="off"
+                       class="layui-input telephone"
+                       minlength="7" maxlength="11"
+                       th:value="${userInfo.telephone == null ? '' : userInfo.telephone}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-home"></i>&nbsp;家庭住址</label>
+            <div class="layui-input-inline">
+                <input type="text" name="address" placeholder="请输入家庭住址" autocomplete="off"
+                       class="layui-input address"
+                       maxlength="40"
+                       th:value="${userInfo.address == null ? '' : userInfo.address}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-form"></i>&nbsp;个人简介</label>
+            <div class="layui-input-block">
+                <textarea type="text" name="description" placeholder="请输入个人简介" autocomplete="off"
+                          class="layui-input description"
+                          maxlength="200"
+                          th:text="${userInfo.description == null ? '' : userInfo.description}"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input class="layui-btn layui-btn-lg" id="submit-button" type="submit" value="马上修改">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

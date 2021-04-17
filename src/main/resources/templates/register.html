@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="用户注册"></title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/register.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <blockquote class="layui-elem-quote"><b><i class="layui-icon layui-icon-username"></i>&nbsp;用户注册</b></blockquote>
+    <form class="layui-form" action="" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>&nbsp;用户名&nbsp;<span class="layui-badge-dot"></span></label>
+            <div class="layui-input-inline">
+                <input type="text" name="username" required placeholder="请输入用户名" autocomplete="off"
+                       class="layui-input username"
+                       minlength="1" maxlength="20"
+                       oninput="usernameCheck(value)">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="tips"></div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;<span class="layui-badge-dot"></span></label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required placeholder="请输入密码" autocomplete="off"
+                       class="layui-input password"
+                       minlength="8" maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-time"></i>&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;龄</label>
+            <div class="layui-input-inline">
+                <input type="number" name="age" placeholder="请输入年龄" autocomplete="off"
+                       class="layui-input age"
+                       min="0" max="150"
+                       oninput="if(value.length > 3) value = value.slice(0, 3)
+                       else if (value > 150) value = 150
+                       else if (value < 0) value = 0
+                       else if (!/^[0-9]+$/.test(value)) value = ''">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-male"></i><i class="layui-icon layui-icon-female"></i>性&nbsp;别&nbsp;<span class="layui-badge-dot"></span></label>
+            <div class="layui-input-block">
+                <input type="radio" name="gender" value="男" title="男" checked>
+                <input type="radio" name="gender" value="女" title="女">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-user"></i>&nbsp;真实姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="realname" placeholder="请输入真实姓名" autocomplete="off"
+                       class="layui-input realname"
+                       maxlength="20">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-date"></i>&nbsp;出生日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="birthday" id="birthday"
+                       placeholder="请选择出生日期" autocomplete="off"
+                       class="layui-input birthday">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-cellphone"></i>&nbsp;电话号码</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="telephone" placeholder="请输入手机号码" autocomplete="off"
+                       class="layui-input telephone"
+                       minlength="7" maxlength="11">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-home"></i>&nbsp;家庭住址</label>
+            <div class="layui-input-inline">
+                <input type="text" name="address" placeholder="请输入家庭住址" autocomplete="off"
+                       class="layui-input address"
+                       maxlength="40">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-form"></i>&nbsp;个人简介</label>
+            <div class="layui-input-block">
+                <textarea type="text" name="description" placeholder="请输入个人简介" autocomplete="off"
+                          class="layui-input description"
+                          maxlength="200"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input class="layui-btn layui-btn-lg" id="submit-button" type="submit" value="马上注册">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

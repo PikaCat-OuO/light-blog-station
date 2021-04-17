@@ -1,0 +1,16 @@
+.category {
+    width: 302px;
+}
+
+#tips {
+    position: relative;
+    left: 120px;
+}
+
+#ok {
+    color: green;
+}
+
+#no {
+    color: red;
+}

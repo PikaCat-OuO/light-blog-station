@@ -1,0 +1,23 @@
+#content {
+    display: none;
+}
+
+.layui-form-label {
+    text-align: left;
+}
+
+.layui-panel {
+    padding: 30px;
+}
+
+.title {
+    width: 442px;
+}
+
+.keywords {
+    width: 301px;
+}
+
+.layui-input-inline .layui-unselect {
+    width: 184px;
+}

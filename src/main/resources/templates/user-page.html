@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${username + '的个人主页'}"></title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/user-page.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/user-page.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><i class="layui-icon layui-icon-username"></i>&nbsp;个人信息</li>
+            <li><i class="layui-icon layui-icon-rss"></i>&nbsp;个人博客</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>&nbsp;用户名</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel username">
+                            <a href="" id="username" th:text="${username}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-time"></i>&nbsp;年&nbsp;&nbsp;&nbsp;&nbsp;龄</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel age"
+                             th:text="${userInfo.age == null ? '用户未提供' : userInfo.age}"></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-male"></i><i class="layui-icon layui-icon-female"></i>性&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel gender"
+                             th:text="${userInfo.gender}"></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-user"></i>&nbsp;真实姓名</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel realname"
+                             th:text="${userInfo.realname == null ? '用户未提供' : userInfo.realname}"></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-date"></i>&nbsp;出生日期</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel birthday"
+                             th:text="${userInfo.description == null ? '用户未提供' : #strings.substring(userInfo.birthday.toLocaleString(), 0, userInfo.birthday.toLocaleString().indexOf('日') + 1)}"></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-cellphone"></i>&nbsp;电话号码</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel telephone"
+                             th:text="${userInfo.telephone == null ? '用户未提供' : userInfo.telephone}"></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-home"></i>&nbsp;家庭住址</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel address"
+                             th:text="${userInfo.address == null ? '用户未提供' : userInfo.address}"></div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><i class="layui-icon layui-icon-form"></i>&nbsp;个人简介</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-panel description"
+                             th:text="${userInfo.description == null ? '用户什么都没写' : userInfo.description}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <table id="user-articles" lay-filter="user-articles-filter"></table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+<a id="current-user" th:text="${#authentication.name}" sec:authorize="isAuthenticated()"></a>
+</html>
