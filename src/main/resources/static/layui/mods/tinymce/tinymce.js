@@ -17,7 +17,7 @@ layui.define(['jquery'], function (exports) {
 
     var settings = {
         base_url: modPath
-        , images_upload_url: '/upload'//图片上传接口，可在option传入，也可在这里修改，option的值优先
+        , images_upload_url: '/my-articles/upload'//图片上传接口，可在option传入，也可在这里修改，option的值优先
         , language: 'zh_CN'//语言，可在option传入，也可在这里修改，option的值优先
         , response: {//后台返回数据格式设置
             statusName: response.statusName || 'code'//返回状态字段

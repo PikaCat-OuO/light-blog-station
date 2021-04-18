@@ -5,11 +5,13 @@ import com.pikacat.blog.entity.ArticleInfo;
 import com.pikacat.blog.service.ArticleInfoService;
 import com.pikacat.blog.service.CategoryService;
 import com.pikacat.blog.service.UserInfoService;
+import com.pikacat.blog.util.FileUtil;
 import com.pikacat.blog.util.SecurityUtil;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -103,6 +105,23 @@ public class MyArticlesController {
     @ResponseBody
     public void deleteArticle(@PathVariable Long articleUid) {
         articleInfoService.deleteArticleByArticleUid(articleUid);
+    }
+
+    // 文件上传接口
+    @PostMapping("/upload")
+    @ResponseBody
+    public Map<String, Object> imageUpload(@RequestParam("edit") MultipartFile file) {
+        Map<String, Object> modelMap = new HashMap<>();
+        String location = FileUtil.saveImage(file);
+        if (location.startsWith("/")) {
+            modelMap.put("code", 0);
+            modelMap.put("msg", "上传成功");
+            modelMap.put("data", location);
+        } else {
+            modelMap.put("code", 1);
+            modelMap.put("msg", location);
+        }
+        return modelMap;
     }
 
 }
