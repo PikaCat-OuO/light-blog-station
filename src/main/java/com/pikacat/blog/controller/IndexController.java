@@ -35,7 +35,6 @@ public class IndexController {
     public Map<String, Object> getHotOpenArticles(Long page, Short limit,
                                                   @Nullable String field,
                                                   @Nullable String order) {
-
         // 获取数据
         Page<ArticleInfo> articlesPage = new Page<>(page, limit);
         articleInfoService.getHotOpenArticles(articlesPage, field, order);

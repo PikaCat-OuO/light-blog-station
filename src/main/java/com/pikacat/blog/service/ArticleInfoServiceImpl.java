@@ -191,6 +191,14 @@ public class ArticleInfoServiceImpl implements ArticleInfoService {
             // 长度不满足要求
             return;
         }
+        // 如果用户设置文章不公开
+        if (articleInfo.getOpen() == null) {
+            articleInfo.setOpen(false);
+        }
+        // 如果用户设置文章不可评论
+        if (articleInfo.getCommentable() == null) {
+            articleInfo.setCommentable(false);
+        }
         // 根据所给的articleInfo获得articleUid，并检查是否是当前用户的文章
         ArticleInfo originArticleInfo = articleInfoMapper.selectOne(
                 new QueryWrapper<ArticleInfo>()
@@ -230,6 +238,14 @@ public class ArticleInfoServiceImpl implements ArticleInfoService {
             // 长度不满足要求
             return;
         }
+        // 如果用户设置文章不公开
+        if (articleInfo.getOpen() == null) {
+            articleInfo.setOpen(false);
+        }
+        // 如果用户设置文章不可评论
+        if (articleInfo.getCommentable() == null) {
+            articleInfo.setCommentable(false);
+        }
         // 根据所给的articleInfo获得articleUid
         ArticleInfo originArticleInfo = articleInfoMapper.selectOne(
                 new QueryWrapper<ArticleInfo>()
@@ -264,6 +280,14 @@ public class ArticleInfoServiceImpl implements ArticleInfoService {
                 articleInfo.getKeywords().length() > 20) {
             // 长度不满足要求
             return;
+        }
+        // 如果用户设置文章不公开
+        if (articleInfo.getOpen() == null) {
+            articleInfo.setOpen(false);
+        }
+        // 如果用户设置文章不可评论
+        if (articleInfo.getCommentable() == null) {
+            articleInfo.setCommentable(false);
         }
         // 修正文章的userUid
         articleInfo.setUsername(SecurityUtil.getCurrentUserName());

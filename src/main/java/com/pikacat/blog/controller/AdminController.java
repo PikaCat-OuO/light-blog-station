@@ -64,6 +64,7 @@ public class AdminController {
     }
 
     @GetMapping("/delete-article/{articleUid}")
+    @ResponseBody
     public void deleteArticle(@PathVariable Long articleUid) {
         articleInfoService.adminDeleteArticleByArticleUid(articleUid);
     }
@@ -84,6 +85,7 @@ public class AdminController {
     }
 
     @GetMapping("/delete-user/{username}")
+    @ResponseBody
     public void deleteUserByUsername(@PathVariable String username) {
         userInfoService.adminDeleteUserByUsername(username);
     }
@@ -104,6 +106,7 @@ public class AdminController {
     }
 
     @GetMapping("/delete-category/{category}")
+    @ResponseBody
     public void deleteCategory(@PathVariable String category) {
         categoryService.adminDeleteCategory(category);
     }

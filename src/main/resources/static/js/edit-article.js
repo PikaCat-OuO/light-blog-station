@@ -4,7 +4,6 @@ layui.extend({
     layui.tinymce.render({
         elem: "#content"
         , plugins: 'autoresize ax_wordlimit image'
-        , toolbar: 'image'
         , statusbar: false
         , ax_wordlimit_num: 10000
         , ax_wordlimit_callback: function (editor, txt, num) {
