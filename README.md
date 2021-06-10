@@ -21,7 +21,7 @@
 
 #### 使用说明
 
-java -jar xxxxx.jar
+java -jar 轻博客小站v1.0.jar
 
 #### 参与贡献
 
