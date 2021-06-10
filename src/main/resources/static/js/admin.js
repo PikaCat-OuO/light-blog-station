@@ -399,12 +399,12 @@ layui.use("table", function () {
 
     // 监听头部工具栏事件
     layui.table.on('toolbar(admin-manage-filter)', function (obj) {
+        if (obj.event === "newAdmin") {
+            window.open('/super-admin/add-admin');
+            return;
+        }
         if (obj.event === "deleteSelected") {
             let checkStatus = layui.table.checkStatus(obj.config.id);
-            if (obj.event === "newAdmin") {
-                window.open('/super-admin/add-admin');
-                return;
-            }
             if (checkStatus.data.length === 0) {
                 layui.layer.msg("请先选择需要删除的管理员");
             } else {
