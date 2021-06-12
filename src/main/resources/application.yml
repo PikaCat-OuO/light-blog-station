@@ -1,11 +1,3 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useSSL=false
-    username: root
-    password: 123456
-  web:
-    resources:
-      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${upload-path}
-
-upload-path: D:/uploads/
+  profiles:
+    active: linux
