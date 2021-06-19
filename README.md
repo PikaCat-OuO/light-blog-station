@@ -17,7 +17,7 @@
 
 #### 使用说明
 
-使用Docker:\
+使用Docker:
 复制发行版文件(轻博客小站v1.1.jar)、Dockerfile、docker-compose.yml到同一目录下\
 
 ```shell
@@ -25,7 +25,7 @@ docker-compose up
 ```
 
 
-不使用Docker:\
+不使用Docker:
 ```shell
 java -jar 轻博客小站v1.1.jar
 ```
