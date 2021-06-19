@@ -19,10 +19,16 @@
 
 使用Docker:\
 复制发行版文件(轻博客小站v1.1.jar)、Dockerfile、docker-compose.yml到同一目录下\
+
+```
 docker-compose up
+```
+
 
 不使用Docker:\
+```
 java -jar 轻博客小站v1.1.jar
+```
 
 访问示例(较慢，1核1G，1Mb/s):http://116.63.142.107/
 
