@@ -57,3 +57,5 @@ PHP漏洞再次尝试
 ![半夜三更ssh爆破](https://images.gitee.com/uploads/images/2021/0625/155248_17468e90_7628839.png "屏幕截图.png")
 半夜三更ssh爆破2
 ![半夜三更ssh爆破2](https://images.gitee.com/uploads/images/2021/0625/155311_1bf88327_7628839.png "屏幕截图.png")
+尝试;sh多行命令注入执行恶意指令。
+![命令注入](https://images.gitee.com/uploads/images/2021/0627/110245_24492428_7628839.png "屏幕截图.png")
