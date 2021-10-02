@@ -6,7 +6,7 @@ services:
     depends_on:
       - blog_mysql
     ports:
-    - "80:8080"
+    - "80:80"
   blog_mysql:
     image: docker.io/mysql:latest
     ports:
@@ -15,4 +15,7 @@ services:
       MYSQL_DATABASE: blog
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./uploads:/uploads
     restart: always

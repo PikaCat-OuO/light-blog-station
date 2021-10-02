@@ -8,6 +8,6 @@ spring:
     resources:
       static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${upload-path}
 
-upload-path: /root/light-blog/uploads/
+upload-path: /uploads/
 server:
   port: 80
