@@ -17,11 +17,11 @@
 
 #### 使用说明
 
-使用Docker:
+使用Docker(Docker Compose V2):
 复制发行版文件(轻博客小站v1.1.jar)、Dockerfile、docker-compose.yml到同一目录下
 
 ```shell
-docker-compose up
+docker compose up
 ```
 
 
@@ -29,6 +29,10 @@ docker-compose up
 ```shell
 java -jar 轻博客小站v1.1.jar
 ```
+
+#### 演示地址
+
+http://122.9.144.21
 
 #### 参与贡献
 
