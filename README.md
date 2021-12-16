@@ -30,10 +30,6 @@ docker compose up
 java -jar 轻博客小站v1.1.jar
 ```
 
-#### 演示地址
-
-http://122.9.144.21
-
 #### 参与贡献
 
 PikaCat
