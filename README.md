@@ -17,7 +17,9 @@
 
 #### 使用说明
 
-使用Docker(Docker Compose V2):
+演示网址：http://122.9.144.21
+
+使用Docker(Docker Compose V2):\
 复制发行版文件(轻博客小站v1.1.jar)、Dockerfile、docker-compose.yml到同一目录下
 
 ```shell
