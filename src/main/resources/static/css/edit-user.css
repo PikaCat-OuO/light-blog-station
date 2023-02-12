@@ -1,0 +1,49 @@
+.layui-form-label {
+    text-align: left;
+}
+
+.username {
+    width: 302px;
+}
+
+.password {
+    width: 302px;
+}
+
+.realname {
+    width: 302px;
+}
+
+.age {
+    width: 104px;
+}
+
+.birthday {
+    width: 122px;
+}
+
+.telephone {
+    width: 122px;
+}
+
+.address {
+    width: 582px;
+}
+
+.description {
+    padding: 10px;
+    height: 100px;
+}
+
+#tips {
+    position: relative;
+    left: 120px;
+}
+
+#ok {
+    color: green;
+}
+
+#no {
+    color: red;
+}

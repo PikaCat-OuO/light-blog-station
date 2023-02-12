@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${article.title}"></title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/article.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/article.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <blockquote class="layui-elem-quote">
+        <i class="layui-icon layui-icon-rss"></i>&nbsp;
+        <b th:text="${article.title}"></b>&nbsp;
+        <a class="layui-btn layui-btn-radius" sec:authorize="hasAuthority('USER')"
+           th:href="@{/article/{articleUid}/subscribe(articleUid = ${articleUid})}"
+           th:if="${!subscribed}"><i class="layui-icon layui-icon-star"></i>关注该博客</a>
+        <a class="layui-btn layui-btn-danger layui-btn-radius" sec:authorize="hasAuthority('USER')"
+           th:href="@{/article/{articleUid}/unsubscribe(articleUid = ${articleUid})}"
+           th:if="${subscribed}"><i class="layui-icon layui-icon-star"></i>取消关注该博客</a>
+        <a id="author" th:href="@{/user-page/{username}/(username = ${author.username})}"
+           th:text="${'【作者：' + author.username + '】'}">
+        </a>
+    </blockquote>
+    <div class="layui-panel info">
+        <div class="meta">
+            <p th:text="${'类型：' + article.category}" id="category"></p>
+            <p th:text="${'关键词：' + article.keywords}" id="keywords"></p>
+        </div>
+        <div class="time">
+            <p th:text="${'创建时间：' + article.createTime.toLocaleString()}"></p>
+            <p th:text="${'修改时间：' + article.modifyTime.toLocaleString()}"></p>
+        </div>
+    </div>
+    <textarea id="content" th:utext="${article.content}"></textarea>
+    <p class="tips-cant-comment" th:if="!${article.commentable}">（该博客不可评论）</p>
+    <div id="comment-box" class="comment-box" th:if="${article.commentable}">
+        <blockquote class="layui-elem-quote">
+            <i class="layui-icon layui-icon-dialogue"></i>&nbsp;相关评论<label class="tips-login" sec:authorize="isAnonymous()">（登录后可发表评论）</label>
+        </blockquote>
+        <form action="add-comment" method="post" sec:authorize="hasAuthority('USER')">
+            <textarea class="layui-textarea" name="comment"
+                      placeholder="发表一些看法吧" maxlength="1000"
+                      required></textarea>
+            <div class="layui-container add-comment">
+                <input type="submit" class="layui-btn layui-btn-lg" value="发表评论">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

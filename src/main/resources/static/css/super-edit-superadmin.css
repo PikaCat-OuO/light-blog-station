@@ -1,0 +1,20 @@
+.username {
+    width: 302px;
+}
+
+.layui-form-label {
+    text-align: left;
+}
+
+#tips {
+    position: relative;
+    left: 120px;
+}
+
+#ok {
+    color: green;
+}
+
+#no {
+    color: red;
+}

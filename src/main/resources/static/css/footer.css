@@ -1,0 +1,41 @@
+.footer {
+    margin-top: 10px;
+    line-height: 30px;
+    text-align: center;
+    color: whitesmoke;
+    font-weight: 300;
+    background-color: #393D49;
+}
+
+.footer-img {
+    margin: 10px;
+    height: 30px;
+}
+
+.site-name {
+    width: calc(100vw - 9.4rem);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: whitesmoke;
+    position: relative;
+}
+
+.site-union {
+    color: #999;
+}
+
+.site-union .site-union-desc {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#self{
+    color: whitesmoke;
+}
+
+#self:hover {
+    color: white;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>轻博客小站</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
+</head>
+<header th:replace="header::header"></header>
+<body class="layui-anim layui-anim-downbit">
+<div class="layui-container">
+    <blockquote class="layui-elem-quote"><b><i class="layui-icon layui-icon-rss"></i>&nbsp;最新公开博客</b></blockquote>
+    <table id="hot-articles" lay-filter="hot-articles-filter"></table>
+</div>
+</body>
+<footer th:replace="footer::footer"></footer>
+</html>

@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  light-blog-app:
+    build: .
+    image: light-blog-app
+    depends_on:
+      - blog_mysql
+    ports:
+    - "80:80"
+  blog_mysql:
+    image: docker.io/mysql:latest
+    ports:
+    - "3306:3306"
+    environment:
+      MYSQL_DATABASE: blog
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./uploads:/uploads
+    restart: always

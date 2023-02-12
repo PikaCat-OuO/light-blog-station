@@ -1,0 +1,11 @@
+body {
+    background-color: rgb(242, 242, 242);
+}
+
+.personal-center {
+    float: right;
+}
+
+.layui-nav-child {
+    z-index: 9999;
+}
